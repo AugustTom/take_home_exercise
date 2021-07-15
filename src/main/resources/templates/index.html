@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<!--    TODO change vue to production-->
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+</head>
+<body>
+<div class="max-w-2xl bg-white py-10 px-5 m-auto w-full mt-10">
+
+    <form id="shipping_cost" @submit.prevent="processForm" >
+        <label for="pickup_postcode">Pickup Postcode</label>
+        <input type="text" id="pickup_postcode" v-model="pickup_postcode">
+        <label for="delivery_postcode">Delivery Postcode</label>
+        <input type="text" id="delivery_postcode" v-model="delivery_postcode">
+        <label for="vehicle_options">Vehicle Options</label>
+        <select v-model="vehicle" id="vehicle_options" class="">
+            <option id="vehicle" th:each="vehicle : ${vehicle_options}" th:text="${vehicle}"></option>
+        </select>
+        <input type="submit" value="Calculate Cost">
+    </form>
+    Price: <span id="price"></span>
+</div>
+</body>
+
+<script>
+
+    const app = new Vue({
+
+        el: '#shipping_cost',
+        data: {
+            pickup_postcode: '',
+            delivery_postcode: '',
+            vehicle: ''
+        },
+        methods: {
+            processForm:function () {
+                const body = {
+                    pickupPostcode: this.pickup_postcode, deliveryPostcode: this.delivery_postcode,
+                    vehicle: this.vehicle
+                };
+                let config = {
+                        "Content-Type": "application/json",
+                }
+
+                axios.post("/quote", body,{
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }).then(function (response){
+                    console.log(response.data)
+                    this.price = response.data.price
+                    document.getElementById("price").textContent = price
+                })
+
+            }
+        }
+    });
+</script>
+</html>

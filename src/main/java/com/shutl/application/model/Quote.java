@@ -1,30 +1,11 @@
-package com.shutl.model;
+package com.shutl.application.model;
 
-import java.security.InvalidKeyException;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Quote {
     String pickupPostcode;
     String deliveryPostcode;
     Long price;
-    String vehicle;
-
-    public double getMarkupByVehicle(String vehicle) throws InvalidKeyException {
-        try {
-            return vehicle_markup.get(vehicle);
-        } catch (NullPointerException e){
-            throw new InvalidKeyException("Invalid vehicle input", e.getCause());
-        }
-    }
-
-    private static final Map<String, Double> vehicle_markup = new HashMap<>() {{
-        put("bicycle",0.10);
-        put("motorbike",0.15);
-        put("parcel_car",0.20);
-        put("small_val",0.30);
-        put("large_van",0.40);
-    }};
+    String vehicle = null;
 
     public Quote() {}
 
@@ -84,3 +65,4 @@ public class Quote {
         this.vehicle = vehicle;
     }
 }
+

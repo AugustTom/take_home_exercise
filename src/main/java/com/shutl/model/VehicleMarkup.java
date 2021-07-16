@@ -1,6 +1,5 @@
-package com.shutl.application.model;
+package com.shutl.model;
 
-import java.security.InvalidKeyException;
 import java.util.ArrayList;
 
 public enum VehicleMarkup {
@@ -10,14 +9,14 @@ public enum VehicleMarkup {
     small_val(0.30),
     large_van(0.40);
 
-    private double value;
+    private final double value;
 
     VehicleMarkup(double value){
         this.value = value;
     }
 
     public static ArrayList<String> getVehicleList(){
-        ArrayList<String> keys = new ArrayList<String>();
+        ArrayList<String> keys = new ArrayList<>();
         for (VehicleMarkup vehicle : VehicleMarkup.values())
         {
             String name = vehicle.name();

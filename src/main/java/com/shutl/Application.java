@@ -1,4 +1,4 @@
-package com.shutl.application;
+package com.shutl;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

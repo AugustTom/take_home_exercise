@@ -1,11 +1,8 @@
-package com.shutl.application.controller;
+package com.shutl.controller;
 
-import com.shutl.application.model.Quote;
-import com.shutl.application.model.VehicleMarkup;
+import com.shutl.model.VehicleMarkup;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;

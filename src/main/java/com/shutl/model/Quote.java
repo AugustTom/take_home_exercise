@@ -1,11 +1,11 @@
-package com.shutl.application.model;
+package com.shutl.model;
 
 
 public class Quote {
-    String pickupPostcode;
-    String deliveryPostcode;
-    Long price;
-    String vehicle = null;
+    private String pickupPostcode;
+    private String deliveryPostcode;
+    private Long price;
+    private String vehicle = null;
 
     public Quote() {}
 

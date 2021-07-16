@@ -1,8 +1,8 @@
-package com.shutl.application.controller;
+package com.shutl.controller;
 
 
-import com.shutl.application.model.Quote;
-import com.shutl.application.model.VehicleMarkup;
+import com.shutl.model.Quote;
+import com.shutl.model.VehicleMarkup;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
